@@ -5,7 +5,7 @@
 <body>
     <h3 style="text-align: center;">Login Form</h3>
     <fieldset style="width:600px;margin: 10px auto">
-    <form action="router.php?controller=login" method="post" style="margin: 10px auto; width: 600px">
+    <form action="../router.php?controller=login" method="post" style="margin: 10px auto; width: 600px">
         <label> Enter your username : </label>
         <input name="username" type="text" placeholder="enter your username"/>
         <br>
