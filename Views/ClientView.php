@@ -2,6 +2,7 @@
 use Implementations\UserImplementation;
 
 $categories = UserImplementation::GetCategories();
+$posts = UserImplementation::GetPosts();
 ?>
 <html>
 <head>
@@ -24,21 +25,30 @@ $categories = UserImplementation::GetCategories();
             <?php
             }
             ?>
-
-
-
         </select>
         <br>
         <br>
         <label> By Creation Date : </label>
         <select name="" id="">
-            <option value="">Choose a date</option>
+            <?php
+            foreach ($posts as $post) {
+                ?>
+                <option value="a"><?php echo $post->getCreatedAt() ?></option>
+                <?php
+            }
+            ?>
         </select>
         <br>
         <br>
         <label> By Update Date : </label>
         <select name="" id="">
-            <option value="">Choose a date</option>
+            <?php
+            foreach ($posts as $post) {
+                ?>
+                <option value="a"><?php echo $post->getUpdatedAt() ?></option>
+                <?php
+            }
+            ?>
         </select>
         <br>
         <br>

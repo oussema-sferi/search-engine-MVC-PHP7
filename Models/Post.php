@@ -9,8 +9,21 @@ class Post
 {
    private int $id;
    private string $content;
-   private DateTime $createdAt;
-   private DateTime $updatedAt;
+   private string $createdAt;
+   private string $updatedAt;
+
+    /**
+     * Post constructor.
+     * @param string $content
+     * @param string $createdAt
+     * @param string $updatedAt
+     */
+    public function __construct(string $content, string $createdAt, string $updatedAt)
+    {
+        $this->content = $content;
+        $this->createdAt = $createdAt;
+        $this->updatedAt = $updatedAt;
+    }
 
     /**
      * @return int
@@ -45,33 +58,33 @@ class Post
     }
 
     /**
-     * @return DateTime
+     * @return string
      */
-    public function getCreatedAt(): DateTime
+    public function getCreatedAt(): string
     {
         return $this->createdAt;
     }
 
     /**
-     * @param DateTime $createdAt
+     * @param string $createdAt
      */
-    public function setCreatedAt(DateTime $createdAt): void
+    public function setCreatedAt(string $createdAt): void
     {
         $this->createdAt = $createdAt;
     }
 
     /**
-     * @return DateTime
+     * @return string
      */
-    public function getUpdatedAt(): DateTime
+    public function getUpdatedAt(): string
     {
         return $this->updatedAt;
     }
 
     /**
-     * @param DateTime $updatedAt
+     * @param string $updatedAt
      */
-    public function setUpdatedAt(DateTime $updatedAt): void
+    public function setUpdatedAt(string $updatedAt): void
     {
         $this->updatedAt = $updatedAt;
     }

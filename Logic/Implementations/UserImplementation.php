@@ -6,24 +6,26 @@ use Database\Db;
 use Entities\Admin;
 use Entities\Client;
 use Entities\Category;
+use Entities\Post;
 use Interfaces\InterfaceUser;
 use DateTime;
 use ArrayObject;
 
 
-class UserImplementation implements InterfaceUser {
+class UserImplementation implements InterfaceUser
+{
 
     public static function Login(string $username, string $password): bool
     {
-        $db=Db::getInstance();
-        $sql=" SELECT * FROM user WHERE username = :username and password = :password";
-        $query=$db->prepare($sql);
-        $query->bindParam(':username',$username);
-        $query->bindParam(':password',$password);
+        $db = Db::getInstance();
+        $sql = " SELECT * FROM user WHERE username = :username and password = :password";
+        $query = $db->prepare($sql);
+        $query->bindParam(':username', $username);
+        $query->bindParam(':password', $password);
         $query->execute();
         $result = $query->fetchAll();
         if (count($result) === 1) {
-            if($result[0]['role'] === 'client') {
+            if ($result[0]['role'] === 'client') {
                 $client = new Client();
                 $client->setId($result[0]['id']);
                 $client->setUsername($result[0]['username']);
@@ -59,9 +61,9 @@ class UserImplementation implements InterfaceUser {
 
     public static function GetCategories(): ArrayObject
     {
-        $db=Db::getInstance();
-        $finalResult= new ArrayObject();
-        $sql=" SELECT * FROM category";
+        $db = Db::getInstance();
+        $finalResult = new ArrayObject();
+        $sql = " SELECT * FROM category";
         $query = $db->query($sql);
         $result = $query->fetchAll();
         foreach ($result as $item) {
@@ -70,5 +72,20 @@ class UserImplementation implements InterfaceUser {
         }
         return $finalResult;
         //echo $finalResult[0]->getLabel();
+    }
+
+    public static function GetPosts():ArrayObject
+    {
+        $db = Db::getInstance();
+        $finalResult = new ArrayObject();
+        $sql = " SELECT * FROM post";
+        $query = $db->query($sql);
+        $result = $query->fetchAll();
+        foreach ($result as $item) {
+            $post = new Post($item['content'], $item['created_at'], $item['updated_at']);
+            $finalResult->append($post);
+        }
+        return $finalResult;
+
     }
 }
