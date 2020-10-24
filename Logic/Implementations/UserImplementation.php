@@ -33,7 +33,7 @@ class UserImplementation implements InterfaceUser {
                 $client->setLastConnection(new DateTime($result[0]['last_connection']));
                 $client->setQueriesNumber($result[0]['queries_number_client']);
                 $_SESSION['user'] = $client;
-                var_dump($_SESSION['user']);
+                //echo ($_SESSION['user']['role']);
             } elseif ($result[0]['role'] === 'admin') {
                 $admin = new Admin();
                 $admin->setId($result[0]['id']);
@@ -45,7 +45,7 @@ class UserImplementation implements InterfaceUser {
                 $admin->setRole($result[0]['role']);
                 $admin->setLastConnection(new DateTime($result[0]['last_connection']));
                 $_SESSION['user'] = $admin;
-                var_dump($_SESSION['user']);
+                //var_dump($_SESSION['user']);
             }
 
             return true;
