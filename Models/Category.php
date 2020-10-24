@@ -10,6 +10,16 @@ class Category
     private string $label;
 
     /**
+     * Category constructor.
+     * @param string $label
+     */
+    public function __construct(string $label)
+    {
+        $this->label = $label;
+    }
+
+
+    /**
      * @return int
      */
     public function getId(): int

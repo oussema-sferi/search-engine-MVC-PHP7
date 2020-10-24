@@ -5,8 +5,10 @@ namespace Implementations;
 use Database\Db;
 use Entities\Admin;
 use Entities\Client;
+use Entities\Category;
 use Interfaces\InterfaceUser;
 use DateTime;
+use ArrayObject;
 
 
 class UserImplementation implements InterfaceUser {
@@ -53,5 +55,20 @@ class UserImplementation implements InterfaceUser {
         }
         return false;
 
+    }
+
+    public static function GetCategories(): ArrayObject
+    {
+        $db=Db::getInstance();
+        $finalResult= new ArrayObject();
+        $sql=" SELECT * FROM category";
+        $query = $db->query($sql);
+        $result = $query->fetchAll();
+        foreach ($result as $item) {
+            $category = new Category($item['label']);
+            $finalResult->append($category);
+        }
+        return $finalResult;
+        //echo $finalResult[0]->getLabel();
     }
 }

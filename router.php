@@ -23,6 +23,9 @@ if(isset($_GET['controller'])) {
         case 'login':
             require 'Controllers/LoginController.php';
             break;
+        case 'search':
+            require 'Controllers/SearchController.php';
+            break;
         default:
             echo '404 Not Found';
     }
