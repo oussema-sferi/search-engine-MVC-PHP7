@@ -19,9 +19,9 @@ if(isset($_SESSION['user'])) {
     if(isset($_POST['username']) && isset($_POST['password'])) {
          if(UserImplementation::Login($_POST['username'], $_POST['password'])) {
              if($_SESSION['user']->getRole() === 'client') {
-                 require 'Views/ClientView.php';
+                 header('Location: router.php?controller=client');
              } elseif ($_SESSION['user']->getRole() === 'admin') {
-                 require 'Views/AdminView.php';
+                 header('Location: router.php?controller=admin');
              }
          } else {
              echo  'Usename or Password are wrong!';
