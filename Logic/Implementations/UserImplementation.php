@@ -108,7 +108,7 @@ class UserImplementation implements InterfaceUser
         return $finalResult;
     }
 
-    public static function GetAllUsers()
+    public static function GetAllUsers():ArrayObject
     {
         $db=Db::getInstance();
         $finalResult = new ArrayObject();

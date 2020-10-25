@@ -1,5 +1,9 @@
 <?php
 
+use Implementations\UserImplementation;
+
+$users = UserImplementation::GetAllUsers();
+
 ?>
 <html>
 <head>
@@ -23,12 +27,14 @@
             </tr>
             </thead>
             <tbody>
-            <tr>
-                <th scope="row">1</th>
-                <td>Active</td>
-                <td><a href="ClientView.php">Run</a></td>
-
-            </tr>
+            <?php foreach ($users as $user) { ?>
+                <tr>
+                    <td><?php echo $user->getFullName() ?></td>
+                    <td><?php echo $user->isActive() ?></td>
+                    <td>Toggle</td>
+                </tr>
+            <?php }
+            ?>
 
             </tbody>
         </table>
