@@ -19,33 +19,33 @@ $posts = UserImplementation::GetPosts();
         <label for="category"> By Category : </label>
         <select name="category" id="category">
             <?php
-            foreach ($categories as $cat) {
+            foreach ($categories as $category) {
                 ?>
-            <option value="a"><?php echo $cat->getLabel() ?></option>
+            <option value=<?php echo $category->getId() ?>><?php echo $category->getLabel() ?></option>
             <?php
             }
             ?>
         </select>
         <br>
         <br>
-        <label> By Creation Date : </label>
-        <select name="" id="">
+        <label for="creation-date"> By Creation Date : </label>
+        <select name="creation-date" id="creation-date">
             <?php
             foreach ($posts as $post) {
                 ?>
-                <option value="a"><?php echo $post->getCreatedAt() ?></option>
+                <option value=<?php echo $post->getId() ?>><?php echo $post->getCreatedAt() ?></option>
                 <?php
             }
             ?>
         </select>
         <br>
         <br>
-        <label> By Update Date : </label>
-        <select name="" id="">
+        <label for="update-date"> By Update Date : </label>
+        <select name="update-date" id="update-date">
             <?php
             foreach ($posts as $post) {
                 ?>
-                <option value="a"><?php echo $post->getUpdatedAt() ?></option>
+                <option value=<?php echo $post->getId() ?>><?php echo $post->getUpdatedAt() ?></option>
                 <?php
             }
             ?>

@@ -11,10 +11,12 @@ class Category
 
     /**
      * Category constructor.
+     * @param int $id
      * @param string $label
      */
-    public function __construct(string $label)
+    public function __construct(int $id, string $label)
     {
+        $this->id = $id;
         $this->label = $label;
     }
 

@@ -67,7 +67,7 @@ class UserImplementation implements InterfaceUser
         $query = $db->query($sql);
         $result = $query->fetchAll();
         foreach ($result as $item) {
-            $category = new Category($item['label']);
+            $category = new Category($item['id'], $item['label']);
             $finalResult->append($category);
         }
         return $finalResult;
@@ -82,7 +82,7 @@ class UserImplementation implements InterfaceUser
         $query = $db->query($sql);
         $result = $query->fetchAll();
         foreach ($result as $item) {
-            $post = new Post($item['content'], $item['created_at'], $item['updated_at']);
+            $post = new Post($item['id'], $item['content'], $item['created_at'], $item['updated_at']);
             $finalResult->append($post);
         }
         return $finalResult;

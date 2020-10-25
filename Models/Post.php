@@ -14,16 +14,19 @@ class Post
 
     /**
      * Post constructor.
+     * @param int $id
      * @param string $content
      * @param string $createdAt
      * @param string $updatedAt
      */
-    public function __construct(string $content, string $createdAt, string $updatedAt)
+    public function __construct(int $id, string $content, string $createdAt, string $updatedAt)
     {
+        $this->id = $id;
         $this->content = $content;
         $this->createdAt = $createdAt;
         $this->updatedAt = $updatedAt;
     }
+
 
     /**
      * @return int
