@@ -17,13 +17,14 @@ $users = UserImplementation::GetAllUsers();
 <h3 style="text-align: center;">Admin Dashboard</h3>
 <div class="container" style="width:900px;margin: 50px auto;text-align: center">
     <div class="users-status" style="border: 1px solid gray;margin-bottom: 20px;height: 400px">
-        <h3>Users Status</h3>
+        <h3>Users Overview</h3>
         <table class="table table-striped table-dark">
             <thead>
             <tr>
                 <th scope="col">Full Name</th>
                 <th scope="col">Username</th>
                 <th scope="col">Birth Date</th>
+                <th scope="col">Number of Queries</th>
                 <th scope="col">Last Connection</th>
                 <th scope="col">Status</th>
                 <th scope="col">Toggle Status</th>
@@ -37,6 +38,7 @@ $users = UserImplementation::GetAllUsers();
                     <td><?php echo $user->getFullName() ?></td>
                     <td><?php echo $user->getUsername() ?></td>
                     <td><?php echo $user->getBirthDate()->format('d-m-Y') ?></td>
+                    <td><?php echo $user->getQueriesNumber() ?></td>
                     <td><?php echo $user->getLastConnection()->format('d-m-Y H:i:s') ?></td>
                     <td><?php if($user->isActive() == '1'){echo "active";} else {echo "Blocked";} ?></td>
                     <td>
