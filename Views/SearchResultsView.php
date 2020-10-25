@@ -1,4 +1,8 @@
+<?php
+use Implementations\UserImplementation;
+$searchResults= UserImplementation::GetPostsByCriteria($_POST['query'],$criteriaArray);
 
+?>
 <html>
 <head>
     <title>Search Results</title>
@@ -19,16 +23,16 @@
     </tr>
     </thead>
     <tbody>
-    <tr>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>@mdo</td>
+    <?php foreach ($searchResults as $result) { ?>
+        <tr>
+        <td><?php echo $result->getContent()?></td>
+    <td><?php echo $result->getCreatedAt()?></td>
+    <td><?php echo $result->getUpdatedAt()?></td>
     </tr>
-    <tr>
-        <td>Jacob</td>
-        <td>Thornton</td>
-        <td>@fat</td>
-    </tr>
+    <?php }
+        ?>
+
+
 
     </tbody>
 </table>

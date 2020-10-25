@@ -33,7 +33,7 @@ $posts = UserImplementation::GetPosts();
             <?php
             foreach ($posts as $post) {
                 ?>
-                <option value=<?php echo $post->getId() ?>><?php echo $post->getCreatedAt() ?></option>
+                <option value=<?php echo $post->getCreatedAt() ?>><?php echo $post->getCreatedAt() ?></option>
                 <?php
             }
             ?>
@@ -45,7 +45,7 @@ $posts = UserImplementation::GetPosts();
             <?php
             foreach ($posts as $post) {
                 ?>
-                <option value=<?php echo $post->getId() ?>><?php echo $post->getUpdatedAt() ?></option>
+                <option value=<?php echo $post->getUpdatedAt() ?>><?php echo $post->getUpdatedAt() ?></option>
                 <?php
             }
             ?>

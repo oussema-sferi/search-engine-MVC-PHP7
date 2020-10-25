@@ -7,6 +7,7 @@ use Entities\Admin;
 use Entities\Client;
 use Entities\Category;
 use Entities\Post;
+use Entities\SearchQuery;
 use Interfaces\InterfaceUser;
 use DateTime;
 use ArrayObject;
@@ -74,7 +75,7 @@ class UserImplementation implements InterfaceUser
         //echo $finalResult[0]->getLabel();
     }
 
-    public static function GetPosts():ArrayObject
+    public static function GetPosts(): ArrayObject
     {
         $db = Db::getInstance();
         $finalResult = new ArrayObject();
@@ -87,5 +88,24 @@ class UserImplementation implements InterfaceUser
         }
         return $finalResult;
 
+    }
+
+   //$criteriaArray=[content,category,created_at,updated_at]
+
+    public static function GetPostsByCriteria(string $content, array $criteriaArray):ArrayObject
+    {
+        $db = Db::getInstance();
+        $finalResult = new ArrayObject();
+        /*foreach ($criteriaArray as $criteria) {
+
+        }*/
+        $sql = "SELECT * FROM post WHERE (content LIKE '%$content%')";
+        $query = $db->query($sql);
+        $result = $query->fetchAll();
+        foreach ($result as $item) {
+            $post = new Post($item['id'], $item['content'], $item['created_at'], $item['updated_at']);
+            $finalResult->append($post);
+        }
+        return $finalResult;
     }
 }

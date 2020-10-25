@@ -8,4 +8,5 @@ interface InterfaceUser {
     public static function Login(string $username, string $password):bool;
     public static function GetCategories():ArrayObject;
     public static function GetPosts():ArrayObject;
+    public static function GetPostsByCriteria(string $content, array $criteriaArray):ArrayObject;
 }

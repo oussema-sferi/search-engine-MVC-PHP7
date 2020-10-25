@@ -9,7 +9,7 @@ class SearchQuery
 {
     private int $id;
     private string $queryContent;
-    private ArrayObject $criterias;
+    private ArrayObject $criteria;
 
     /**
      * @return int
@@ -46,17 +46,17 @@ class SearchQuery
     /**
      * @return ArrayObject
      */
-    public function getCriterias(): ArrayObject
+    public function getCriteria(): ArrayObject
     {
-        return $this->criterias;
+        return $this->criteria;
     }
 
     /**
-     * @param ArrayObject $criterias
+     * @param ArrayObject $criteria
      */
-    public function setCriterias(ArrayObject $criterias): void
+    public function setCriteria(ArrayObject $criteria): void
     {
-        $this->criterias = $criterias;
+        $this->criteria = $criteria;
     }
 
 
