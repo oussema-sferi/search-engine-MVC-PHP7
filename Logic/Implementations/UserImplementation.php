@@ -131,4 +131,12 @@ class UserImplementation implements InterfaceUser
        return $finalResult;
         var_dump($finalResult);
     }
+
+    public static function BlockUser(int $id): void
+    {
+        $db=Db::getInstance();
+        $sql="UPDATE user SET is_active=0 WHERE id=$id";
+        $db->query($sql);
+
+    }
 }

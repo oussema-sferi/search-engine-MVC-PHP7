@@ -4,6 +4,8 @@ use Implementations\UserImplementation;
 
 $users = UserImplementation::GetAllUsers();
 
+
+
 ?>
 <html>
 <head>
@@ -36,8 +38,10 @@ $users = UserImplementation::GetAllUsers();
                     <td><?php echo $user->getUsername() ?></td>
                     <td><?php echo $user->getBirthDate()->format('d-m-Y') ?></td>
                     <td><?php echo $user->getLastConnection()->format('d-m-Y H:i:s') ?></td>
-                    <td><?php echo $user->isActive() ?></td>
-                    <td><button>Toggle</button></td>
+                    <td><?php if($user->isActive() == '1'){echo "active";} else {echo "Blocked";} ?></td>
+                    <td>
+                        <form action="router.php?controller=block-user" method="post"><input type="submit" name=<?php echo $user->getId()?> value="Toggle"></input></form>
+                    </td>
                 </tr>
             <?php }
             ?>

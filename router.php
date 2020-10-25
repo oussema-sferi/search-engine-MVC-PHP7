@@ -26,6 +26,9 @@ if(isset($_GET['controller'])) {
         case 'search':
             require 'Controllers/SearchController.php';
             break;
+        case 'block-user':
+            require 'Controllers/BlockUserController.php';
+            break;
         default:
             echo '404 Not Found';
     }
