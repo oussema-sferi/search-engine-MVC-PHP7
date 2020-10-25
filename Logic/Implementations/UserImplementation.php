@@ -120,6 +120,7 @@ class UserImplementation implements InterfaceUser
             $client = new Client();
             $client->setId($item['id']);
             $client->setFullName($item['fullname']);
+            $client->setUsername($item['username']);
             $client->setBirthDate(new DateTime($item['birth_date']));
             $client->setIsActive($item['is_active']);
             $client->setLastConnection(new DateTime($item['last_connection']));

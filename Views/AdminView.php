@@ -13,13 +13,16 @@ $users = UserImplementation::GetAllUsers();
 </head>
 <body>
 <h3 style="text-align: center;">Admin Dashboard</h3>
-<div class="container" style="width:600px;margin: 50px auto;text-align: center">
+<div class="container" style="width:900px;margin: 50px auto;text-align: center">
     <div class="users-status" style="border: 1px solid gray;margin-bottom: 20px;height: 400px">
         <h3>Users Status</h3>
         <table class="table table-striped table-dark">
             <thead>
             <tr>
                 <th scope="col">Full Name</th>
+                <th scope="col">Username</th>
+                <th scope="col">Birth Date</th>
+                <th scope="col">Last Connection</th>
                 <th scope="col">Status</th>
                 <th scope="col">Toggle Status</th>
 
@@ -30,8 +33,11 @@ $users = UserImplementation::GetAllUsers();
             <?php foreach ($users as $user) { ?>
                 <tr>
                     <td><?php echo $user->getFullName() ?></td>
+                    <td><?php echo $user->getUsername() ?></td>
+                    <td><?php echo $user->getBirthDate()->format('d-m-Y') ?></td>
+                    <td><?php echo $user->getLastConnection()->format('d-m-Y H:i:s') ?></td>
                     <td><?php echo $user->isActive() ?></td>
-                    <td>Toggle</td>
+                    <td><button>Toggle</button></td>
                 </tr>
             <?php }
             ?>
