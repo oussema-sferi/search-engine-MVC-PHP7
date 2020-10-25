@@ -7,9 +7,14 @@ $posts = UserImplementation::GetPosts();
 <html>
 <head>
     <title>Client Dashboard</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+          integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
 </head>
 <body>
 <h3 style="text-align: center;">Client Dashboard</h3>
+<div class="container" style="width:900px;margin: 50px auto;text-align: center">
+    <div class="users-status" style="border: 1px solid gray;margin-bottom: 20px;height: 400px">
+        <h3>Search Engine</h3>
 <fieldset style="width:600px;margin: 10px auto">
     <form action="router.php?controller=search" method="post" style="margin: 10px auto; width: 600px">
         <label> Enter your search query : </label>
@@ -55,8 +60,31 @@ $posts = UserImplementation::GetPosts();
         <input type="submit" value="Search" >
     </form>
 </fieldset>
+    </div>
 
+
+    <div class="users-queries" style="border: 1px solid gray;height: 400px">
+        <h3>Add a Post</h3>
+<form>
+    <div class="form-group">
+        <label for="exampleFormControlSelect1">Choose a Category</label>
+        <select class="form-control" id="exampleFormControlSelect1">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="exampleFormControlTextarea1">Post Content</label>
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+    </div>
 </form>
+
+
+</div>
 </body>
 </html>
 
