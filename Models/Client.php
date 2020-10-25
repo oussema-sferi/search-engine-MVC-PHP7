@@ -10,6 +10,8 @@ class Client extends User
 {
     protected int $queriesNumber;
 
+
+
     /**
      * @return int
      */

@@ -16,6 +16,7 @@ abstract class User
     protected DateTime $lastConnection;
 
 
+
     /**
      * @return string
      */

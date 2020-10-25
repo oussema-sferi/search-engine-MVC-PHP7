@@ -96,10 +96,9 @@ class UserImplementation implements InterfaceUser
     {
         $db = Db::getInstance();
         $finalResult = new ArrayObject();
-        /*foreach ($criteriaArray as $criteria) {
+        //$newSql=" AND (category=" . $criteriaArray['category'] . ") AND (created_at=" . $criteriaArray['creation-date'] . ") AND (updated_at=" . $criteriaArray['update-date'] . ")";
 
-        }*/
-        $sql = "SELECT * FROM post WHERE (content LIKE '%$content%')";
+        $sql = "SELECT * FROM post WHERE (content LIKE '%$content%') AND (category_id = $criteriaArray[0]) AND (created_at LIKE '%$criteriaArray[1]%') AND (updated_at LIKE '%$criteriaArray[2]%')";
         $query = $db->query($sql);
         $result = $query->fetchAll();
         foreach ($result as $item) {
@@ -107,5 +106,28 @@ class UserImplementation implements InterfaceUser
             $finalResult->append($post);
         }
         return $finalResult;
+    }
+
+    public static function GetAllUsers()
+    {
+        $db=Db::getInstance();
+        $finalResult = new ArrayObject();
+        $sql="SELECT * FROM user WHERE (role = 'client')";
+        $query=$db->query($sql);
+        $result=$query->fetchAll();
+        foreach ($result as $item) {
+           // $client = new Client($item['id'], $item['fullname'], $item['birth_date'], $item['is_active'], $item['last_connection'],$item['queries_number_client']);
+            $client = new Client();
+            $client->setId($item['id']);
+            $client->setFullName($item['fullname']);
+            $client->setBirthDate(new DateTime($item['birth_date']));
+            $client->setIsActive($item['is_active']);
+            $client->setLastConnection(new DateTime($item['last_connection']));
+            $client->setQueriesNumber($item['queries_number_client']);
+
+            $finalResult->append($client);
+        }
+       return $finalResult;
+        var_dump($finalResult);
     }
 }
