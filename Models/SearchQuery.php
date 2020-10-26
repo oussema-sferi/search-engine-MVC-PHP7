@@ -12,6 +12,20 @@ class SearchQuery
     private ArrayObject $criteria;
 
     /**
+     * SearchQuery constructor.
+     * @param int $id
+     * @param string $queryContent
+     * @param ArrayObject $criteria
+     */
+    public function __construct(int $id, string $queryContent, ArrayObject $criteria)
+    {
+        $this->id = $id;
+        $this->queryContent = $queryContent;
+        $this->criteria = $criteria;
+    }
+
+
+    /**
      * @return int
      */
     public function getId(): int

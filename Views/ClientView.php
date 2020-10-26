@@ -85,8 +85,33 @@ $posts = UserImplementation::GetPosts();
         <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="content"></textarea>
     </div>
     <input type="submit" value="Add post">
-</form>
 
+
+</form>
+        <br>
+        <br>
+        <h4>All Posts</h4>
+        <table class="table">
+            <thead class="thead-dark">
+            <tr>
+                <th scope="col">Posts</th>
+                <th scope="col">Created At</th>
+                <th scope="col">Updated At</th>
+            </tr>
+            </thead>
+            <tbody>
+            <?php foreach ($posts as $post) { ?>
+                <tr>
+                    <td><?php echo $post->getContent() ?></td>
+                    <td><?php echo $post->getCreatedAt() ?></td>
+                    <td><?php echo $post->getUpdatedAt() ?></td>
+                </tr>
+            <?php }
+            ?>
+
+
+            </tbody>
+        </table>
 
 </div>
 </body>

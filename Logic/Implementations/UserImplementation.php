@@ -146,4 +146,18 @@ class UserImplementation implements InterfaceUser
         $sql="INSERT INTO post (client_id,category_id,content, created_at,updated_at) VALUES ('$userId','$categoryId','$content', NOW(), NOW())";
         $db->query($sql);
     }
+
+    public static function GetSearchQueries(): ArrayObject
+    {
+        $db=Db::getInstance();
+        $finalResult = new ArrayObject();
+        $sql="SELECT * FROM search_query";
+        $query=$db->query($sql);
+        $result=$query->fetchAll();
+        foreach ($result as $item) {
+            $searchQuery = new SearchQuery($item['id'], $item['content'], $item['criteria']);
+            $finalResult->append($searchQuery);
+        }
+        return $finalResult;
+    }
 }

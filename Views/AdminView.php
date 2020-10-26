@@ -4,7 +4,7 @@ use Implementations\UserImplementation;
 
 $users = UserImplementation::GetAllUsers();
 
-
+$searchQueries = UserImplementation::GetSearchQueries();
 
 ?>
 <html>
@@ -64,12 +64,18 @@ $users = UserImplementation::GetAllUsers();
             </tr>
             </thead>
             <tbody>
-            <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
+            <?php foreach ($searchQueries as $query) { ?>
+                <tr>
+                    <td>test name</td>
+                    <td><?php echo $query->getQueryContent() ?></td>
+                    <td><?php echo $query->getCriteria() ?></td>
 
-            </tr>
+                    <td>
+                        <form action="router.php?controller=block-user" method="post"><input type="submit" name=<?php echo $user->getId()?> value="Toggle"></input></form>
+                    </td>
+                </tr>
+            <?php }
+            ?>
 
             </tbody>
         </table>

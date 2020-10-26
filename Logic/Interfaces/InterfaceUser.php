@@ -12,4 +12,5 @@ interface InterfaceUser {
     public static function GetAllUsers():ArrayObject;
     public static function BlockUser(int $id):void;
     public static function AddPost(int $userId, int $categoryId, string $content):void;
+    public static function GetSearchQueries();
 }
