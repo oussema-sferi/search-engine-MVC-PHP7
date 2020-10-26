@@ -155,7 +155,7 @@ class UserImplementation implements InterfaceUser
         $query=$db->query($sql);
         $result=$query->fetchAll();
         foreach ($result as $item) {
-            $searchQuery = new SearchQuery($item['id'], $item['content'], $item['criteria']);
+            $searchQuery = new SearchQuery($item['id'], $item['content'], $item['criteria'], $item[client_id]);
             $finalResult->append($searchQuery);
         }
         return $finalResult;

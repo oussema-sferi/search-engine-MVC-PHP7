@@ -10,8 +10,6 @@ class Client extends User
 {
     protected int $queriesNumber;
 
-
-
     /**
      * @return int
      */
@@ -27,6 +25,5 @@ class Client extends User
     {
         $this->queriesNumber = $queriesNumber;
     }
-
 
 }

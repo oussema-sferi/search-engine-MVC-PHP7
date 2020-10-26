@@ -10,18 +10,37 @@ class SearchQuery
     private int $id;
     private string $queryContent;
     private ArrayObject $criteria;
+    private int $clientId;
 
     /**
      * SearchQuery constructor.
      * @param int $id
      * @param string $queryContent
      * @param ArrayObject $criteria
+     * @param int $clientId
      */
-    public function __construct(int $id, string $queryContent, ArrayObject $criteria)
+    public function __construct(int $id, string $queryContent, ArrayObject $criteria, int $clientId)
     {
         $this->id = $id;
         $this->queryContent = $queryContent;
         $this->criteria = $criteria;
+        $this->clienId = $clientId;
+    }
+
+    /**
+     * @return int
+     */
+    public function getClientId(): int
+    {
+        return $this->clientId;
+    }
+
+    /**
+     * @param int $clientId
+     */
+    public function setClientId(int $clientId): void
+    {
+        $this->clientId = $clientId;
     }
 
 

@@ -1,10 +1,3 @@
-<?php
-use Implementations\UserImplementation;
-
-$categories = UserImplementation::GetCategories();
-$posts = UserImplementation::GetPosts();
-
-?>
 <html>
 <head>
     <title>Client Dashboard</title>

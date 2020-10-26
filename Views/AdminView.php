@@ -1,12 +1,3 @@
-<?php
-
-use Implementations\UserImplementation;
-
-$users = UserImplementation::GetAllUsers();
-
-$searchQueries = UserImplementation::GetSearchQueries();
-
-?>
 <html>
 <head>
     <title>Admin Dashboard</title>

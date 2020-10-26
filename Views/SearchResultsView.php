@@ -1,10 +1,3 @@
-<?php
-
-use Implementations\UserImplementation;
-
-$searchResults = UserImplementation::GetPostsByCriteria($_POST['query'], $criteriaArray);
-
-?>
 <html>
 <head>
     <title>Search Results</title>
