@@ -29,6 +29,9 @@ if(isset($_GET['controller'])) {
         case 'block-user':
             require 'Controllers/BlockUserController.php';
             break;
+        case 'add-post':
+            require 'Controllers/AddPostController.php';
+            break;
         default:
             echo '404 Not Found';
     }

@@ -98,7 +98,7 @@ class UserImplementation implements InterfaceUser
         $finalResult = new ArrayObject();
         //$newSql=" AND (category=" . $criteriaArray['category'] . ") AND (created_at=" . $criteriaArray['creation-date'] . ") AND (updated_at=" . $criteriaArray['update-date'] . ")";
 
-        $sql = "SELECT * FROM post WHERE (content LIKE '%$content%') AND (category_id = $criteriaArray[0]) AND (created_at LIKE '%$criteriaArray[1]%') AND (updated_at LIKE '%$criteriaArray[2]%')";
+        $sql = "SELECT * FROM post WHERE (content LIKE '%$content%')";
         $query = $db->query($sql);
         $result = $query->fetchAll();
         foreach ($result as $item) {
@@ -138,5 +138,12 @@ class UserImplementation implements InterfaceUser
         $sql="UPDATE user SET is_active=0 WHERE id=$id";
         $db->query($sql);
 
+    }
+
+    public static function AddPost(int $userId, int $categoryId, string $content): void
+    {
+        $db=Db::getInstance();
+        $sql="INSERT INTO post (client_id,category_id,content, created_at,updated_at) VALUES ('$userId','$categoryId','$content', NOW(), NOW())";
+        $db->query($sql);
     }
 }

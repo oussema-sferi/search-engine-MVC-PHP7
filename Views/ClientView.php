@@ -3,6 +3,7 @@ use Implementations\UserImplementation;
 
 $categories = UserImplementation::GetCategories();
 $posts = UserImplementation::GetPosts();
+
 ?>
 <html>
 <head>
@@ -65,22 +66,25 @@ $posts = UserImplementation::GetPosts();
 
     <div class="users-queries" style="border: 1px solid gray;height: 400px">
         <h3>Add a Post</h3>
-<form>
+<form action="router.php?controller=add-post" method="post">
     <div class="form-group">
         <label for="exampleFormControlSelect1">Choose a Category</label>
-        <select class="form-control" id="exampleFormControlSelect1">
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
+        <select class="form-control" id="exampleFormControlSelect1" name="category">
+            <?php
+            foreach ($categories as $category) {
+                ?>
+                <option value=<?php echo $category->getId() ?>><?php echo $category->getLabel() ?></option>
+                <?php
+            }
+            ?>
         </select>
     </div>
 
     <div class="form-group">
         <label for="exampleFormControlTextarea1">Post Content</label>
-        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="content"></textarea>
     </div>
+    <input type="submit" value="Add post">
 </form>
 
 

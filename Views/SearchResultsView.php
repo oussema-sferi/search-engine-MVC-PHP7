@@ -2,8 +2,8 @@
 
 use Implementations\UserImplementation;
 
-$searchResults = UserImplementation::GetPostsByCriteria($_POST['query'], [$_POST['category'], $_POST['creation-date'], $_POST['update-date']]);
-var_dump($_POST);
+$searchResults = UserImplementation::GetPostsByCriteria($_POST['query'], $criteriaArray);
+
 ?>
 <html>
 <head>
